@@ -17,7 +17,7 @@ jobs:
           # Checkout the PR branch so we can commit and push back to it
           ref: ${{ github.head_ref }}
       
-      - uses: julia-actions/setup-julia@v2
+      - uses: julia-actions/setup-julia@v3
         with:
           version: '1.10.6' # Exact version required for PkgTemplates reference tests
 

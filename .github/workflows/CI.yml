@@ -1,5 +1,5 @@
 name: CI
-# Run on master, tags, or any pull request
+# Run on master, tags, any pull request, and manual triggering
 on:
   schedule:
     - cron: '0 2 * * *'  # Daily at 2 AM UTC (8 PM CST)
@@ -7,6 +7,7 @@ on:
     branches: [master]
     tags: ["*"]
   pull_request:
+  workflow_dispatch:
 concurrency:
   # Skip intermediate builds: always.
   # Cancel intermediate builds: only if it is a pull request build.

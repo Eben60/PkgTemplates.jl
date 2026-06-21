@@ -10,7 +10,11 @@ using PkgTemplates
         "julia-actions/julia-buildpkg",
         "julia-actions/julia-runtest",
         "julia-actions/julia-processcoverage",
-        "codecov/codecov-action"
+        "codecov/codecov-action",
+        "julia-actions/cache",
+        "julia-actions/julia-docdeploy",
+        "julia-actions/julia-uploadcoveralls",
+        "fredrikekre/runic-action"
     ])
     
     @test issetequal(keys(PkgTemplates.CI_ACTIONS), expected_keys)

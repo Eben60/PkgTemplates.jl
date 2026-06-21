@@ -52,7 +52,7 @@ jobs:
         with:
           version: ${{ matrix.version }}
           arch: ${{ matrix.arch }}
-      - uses: julia-actions/cache@v2
+      - uses: <<& julia-actions/cache>>
       - uses: <<& julia-actions/julia-buildpkg>>
       - uses: <<& julia-actions/julia-runtest>>
       <<#HAS_CODECOV>>
@@ -64,7 +64,7 @@ jobs:
           fail_ci_if_error: false
       <</HAS_CODECOV>>
       <<#HAS_COVERALLS>>
-      - uses: julia-actions/julia-uploadcoveralls@v1
+      - uses: <<& julia-actions/julia-uploadcoveralls>>
         env:
           COVERALLS_TOKEN: ${{ secrets.COVERALLS_TOKEN }}
       <</HAS_COVERALLS>>
@@ -81,9 +81,9 @@ jobs:
       - uses: <<& julia-actions/setup-julia>>
         with:
           version: '1'
-      - uses: julia-actions/cache@v2
+      - uses: <<& julia-actions/cache>>
       - uses: <<& julia-actions/julia-buildpkg>>
-      - uses: julia-actions/julia-docdeploy@v1
+      - uses: <<& julia-actions/julia-docdeploy>>
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DOCUMENTER_KEY: ${{ secrets.DOCUMENTER_KEY }}
@@ -101,7 +101,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: <<& actions/checkout>>
-      - uses: fredrikekre/runic-action@v1
+      - uses: <<& fredrikekre/runic-action>>
         with:
           version: '1'
   <</HAS_RUNIC>>

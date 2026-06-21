@@ -108,7 +108,7 @@ mktempdir() do dir
                 include("git.jl")
 
                 # Quite a bit of output depends on the Julia version,
-                # and the test fixtures are made with Julia 1.10.0
+                # and the test fixtures are made with Julia 1.10.6
                 # TODO: Keep this on the latest stable Julia version, and update
                 # the version used by the corresponding CI job at the same time.
                 REFERENCE_VERSION = v"1.10.6"
@@ -118,7 +118,9 @@ mktempdir() do dir
                         "init.defaultBranch",
                         PT.DEFAULT_DEFAULT_BRANCH,
                     )
-                    if branch == PT.DEFAULT_DEFAULT_BRANCH
+                    if get(ENV, "PT_SKIP_REFERENCE_TESTS", "false") == "true"
+                        @info "Skipping reference tests (PT_SKIP_REFERENCE_TESTS=true)"
+                    elseif branch == PT.DEFAULT_DEFAULT_BRANCH
                         include("reference.jl")
                     else
                         "Skipping reference tests, init.defaultBranch is set"

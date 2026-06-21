@@ -25,10 +25,18 @@ end
 split_versions(results) = Dict{String, String}(split(r, "@", limit=2)[1] => r for r in results)
 
 function extract_ci_actions_versions()
-    ci_file = joinpath(dirname(@__DIR__), ".github", "workflows", "CI.yml")
-    dict = YAML.load_file(ci_file)
+    base_dir = dirname(@__DIR__)
+    files_to_parse = [
+        joinpath(base_dir, ".github", "workflows", "CI.yml"),
+        joinpath(base_dir, ".github", "workflows", "TriggerDependabotUpdate.yml")
+    ]
     results = String[]
-    collect_uses!(dict, results)
+    for f in files_to_parse
+        if isfile(f)
+            dict = YAML.load_file(f)
+            collect_uses!(dict, results)
+        end
+    end
     unique!(results)
     return split_versions(results)
 end

@@ -94,6 +94,7 @@ mktempdir() do dir
             include("template.jl")
             include("plugin.jl")
             include("show.jl")
+            include("parse_ci.jl")
 
             if VERSION < v"1.8"
                 # Interactive tests disabled on Julia Version >= 1.8 due to:

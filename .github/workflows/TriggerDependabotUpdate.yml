@@ -17,7 +17,7 @@ jobs:
         run: echo "This workflow is just for Dependabot to track template dependencies."
       
       # We use `if: false` so these steps are entirely skipped if the workflow is ever triggered manually.
-      - uses: julia-actions/cache@v2
+      - uses: julia-actions/cache@v3
         if: false
       - uses: julia-actions/julia-docdeploy@v1
         if: false

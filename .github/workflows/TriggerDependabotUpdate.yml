@@ -25,5 +25,5 @@ jobs:
         if: false
       - uses: fredrikekre/runic-action@v1
         if: false
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v6
         if: false

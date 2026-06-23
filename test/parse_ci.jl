@@ -14,7 +14,8 @@ using PkgTemplates
         "julia-actions/cache",
         "julia-actions/julia-docdeploy",
         "julia-actions/julia-uploadcoveralls",
-        "fredrikekre/runic-action"
+        "fredrikekre/runic-action",
+        "actions/setup-node",
     ])
     
     @test issetequal(keys(PkgTemplates.CI_ACTIONS), expected_keys)
